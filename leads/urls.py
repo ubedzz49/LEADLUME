@@ -5,7 +5,7 @@ from . import views
 
 
 urlpatterns = [
-    path("home/", home, name="home"),  # Avoid conflict with the root URL in project-level urls.py
+    path("home/", home, name="home"), 
     path("dashboard/", dashboard, name="dashboard"),
     path("whatsapp/", whatsapp_webhook, name="whatsapp_webhook"),
     path("login/", user_login, name="login"),
