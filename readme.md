@@ -51,8 +51,10 @@ LeadLume is a comprehensive lead management system designed specifically for med
 
 ## **Contact**  
 For questions or feedback, feel free to reach out:  
-- **Email:** ubedzz5573@example.com  
-- **Email:** samidhaakilledar2608@example.com  
+- **Email:** ubedzz5573@example.com
 - **GitHub:** [ubedzz49](https://github.com/ubedzz49)  
+- **Email:** samidhaakilledar2608@example.com
+- **GitHub:** [samidha2608](https://github.com/samidha2608)  
+
 
 ---
