@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Lead Details - {{ lead.name }}{% endblock %}
+
+{% block content %}
+<div class="lead-container">
+    <h2>Lead Details</h2>
+    
+    <table>
+        <tr>
+            <th>Name:</th>
+            <td>{{ lead.name }}</td>
+        </tr>
+        <tr>
+            <th>Email:</th>
+            <td>{{ lead.email }}</td>
+        </tr>
+        <tr>
+            <th>Lead Score:</th>
+            <td>{{ lead.lead_score }}</td>
+        </tr>
+        <tr>
+            <th>Total Purchases:</th>
+            <td>{{ lead.purchases.count }}</td>
+        </tr>
+        <tr>
+            <th>Total Amount Spent:</th>
+            <td>₹{{ lead.lead_amount }}</td>
+        </tr>
+    </table>
+
+    <!-- Pie Chart -->
+    
+
+</div>
+{% if pie_chart %}
+    <h3>Contribution to Total Spending</h3>
+    {{ pie_chart | safe }}
+{% else %}
+    <p>No purchases available for this lead.</p>
+{% endif %}
+
+{% if line_chart %}
+    <h3>Daily Spending Trend (Last 90 Days)</h3>
+    {{ line_chart | safe }}
+{% else %}
+    <p>No spending data available for the last 30 days.</p>
+{% endif %}
+
+
+<style>
+    .lead-container { font-family: Arial, sans-serif; margin: 20px; }
+    .lead-container table { width: 50%; border-collapse: collapse; margin-top: 20px; }
+    .lead-container th, .lead-container td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    .lead-container th { background-color: #f4f4f4; }
+    .lead-container div { margin-top: 20px; }
+</style>
+
+{% endblock %}

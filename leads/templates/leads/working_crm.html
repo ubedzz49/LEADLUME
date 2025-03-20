@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'dashboard' %}">CRM Dashboard</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'lead_report' %}">Lead Report</a>  <!-- Report Link -->
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'add_purchase' %}">Add Purchase</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'create_lead' %}">Add Lead</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'lead_list' %}">Lead List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-danger" href="{% url 'logout' %}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <h2 class="mb-4">Dashboard</h2>
+
+    <!-- Leads Section -->
+    <h3>Leads</h3>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Score</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for lead in leads %}
+                <tr>
+                    <td>{{ lead.email }}</td>
+                    <td>{{ lead.name }}</td>
+                    <td>{{lead.phone}}</td>
+                    <td>{{ lead.lead_score }}</td>
+                    <td>
+                        <a href="{% url 'update_lead' lead.pk %}" class="btn btn-info btn-sm">Edit</a>
+                <a href="{% url 'delete_lead' lead.pk %}" class="btn btn-info btn-sm bg-danger">Delete</a>
+                <a href="{% url 'lead_detail' lead.id %}" class="btn btn-info btn-sm bg-success">View</a>
+                    </td>
+                </tr>
+                
+            {% empty %}
+                <tr><td colspan="5" class="text-center">No leads found.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Purchases Section -->
+    <h3>Purchases</h3>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Lead</th>
+                <th>Item</th>
+                <th>Amount</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for purchase in purchases %}
+                <tr>
+                    <td>{{ purchase.lead.name }}</td>
+                    <td>{{ purchase.product_name }}</td>
+                    <td>${{ purchase.amount }}</td>
+                    <td>{{ purchase.purchase_date }}</td>
+                    
+                </tr>
+            {% empty %}
+                <tr><td colspan="6">No purchases found.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Reminders Section -->
+    <h3>Reminders</h3>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Status</th>
+                <th>Lead</th>
+                <th>Message</th>
+                <th>Reminder Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reminder in reminders %}
+                <tr>
+                    <td>{{ reminder.status }}</td>
+                    <td>{{ reminder.lead.name }}</td>
+                    <td>{{ reminder.message }}</td>
+                    <td>{{ reminder.date }}</td>
+                    
+                </tr>
+            {% empty %}
+                <tr><td colspan="5">No reminders found.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

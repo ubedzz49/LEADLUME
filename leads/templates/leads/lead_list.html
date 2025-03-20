@@ -1,0 +1,41 @@
+<!-- leads/templates/leads/lead_list.html -->
+{% extends "base.html" %}
+
+{% block title %}Lead List{% endblock %}
+
+{% block content %}
+        <h3>Leads</h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Score</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for lead in leads %}
+                    <tr>
+                        <td>{{ lead.email }}</td>
+                        <td>{{ lead.name }}</td>
+                        <td>{{lead.phone}}</td>
+                        <td>{{ lead.lead_score }}</td>
+                        <td>
+                            <a href="{% url 'update_lead' lead.pk %}" class="btn btn-info btn-sm">Edit</a>
+                    <a href="{% url 'delete_lead' lead.pk %}" class="btn btn-info btn-sm bg-danger">Delete</a>
+                    <a href="{% url 'lead_detail' lead.id %}" class="btn btn-info btn-sm bg-success">View</a>
+                        </td>
+                    </tr>
+                    
+                {% empty %}
+                    <tr><td colspan="5" class="text-center">No leads found.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    
+
+
+
+{% endblock %}

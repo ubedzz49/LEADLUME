@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card shadow-sm p-4">
+        <h2 class="mb-4">Add a New Lead</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                {{ form.as_p }}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="{% url 'lead_list' %}" class="btn btn-secondary">Back to Leads</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

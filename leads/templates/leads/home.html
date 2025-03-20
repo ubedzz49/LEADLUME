@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Lead Manager{% endblock %}
+
+{% block content %}
+<div class="home-container">
+    <div class="text-center">
+        <h1>Welcome to LeadLume</h1>
+        <p>Manage your leads and interactions efficiently.</p>
+        <a href="{% url 'dashboard' %}" class="btn btn-primary">Go to Dashboard</a>
+    </div>
+    
+    <div class="about-us" style="text-align: center; margin-top: 40px;">
+        <h2>About Us</h2>
+        <div class="developer" style="display: inline-block; text-align: center; margin: 10px auto; padding: 15px; border: 1px solid #ddd; border-radius: 5px; background-color: #f9f9f9; width: 600px;">
+            <h3 style="margin: 0;">Samidha Killedar</h3>
+            <p><strong>Frontend Developer</strong></p>
+            <p>Email: <a href="mailto:samidhakilledar2608@gmail.com" style="color: #007bff; text-decoration: none;">samidhakilledar2608@gmail.com</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/samidha-killedar/" target="_blank" style="color: #007bff; text-decoration: none;">samidha-killedar</a></p>
+        </div>
+        <br>
+        <div class="developer" style="display: inline-block; text-align: center; margin: 10px auto; padding: 15px; border: 1px solid #ddd; border-radius: 5px; background-color: #f9f9f9; width: 600px;">
+            <h3 style="margin: 0;">Sayyed Ubed Ali</h3>
+            <p><strong>Backend Developer</strong></p>
+            <p>Email: <a href="mailto:ubedzz5573@gmail.com" style="color: #007bff; text-decoration: none;">ubedzz5573@gmail.com</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/ubedzz49/" target="_blank" style="color: #007bff; text-decoration: none;">ubedzz49</a></p>
+        </div>
+    </div>
+    
+</div>
+
+{% endblock %}
